@@ -73,7 +73,7 @@ export default function ContactForm() {
     return (
         <>
             <div className="flex flex-row w-full justify-between items-center">
-                <div className="flex flex-col justify-center items-start px-[10%] py-16">
+                <div className="flex flex-col justify-center items-start px-[10%] ">
                     <div className="flex flex-col gap-y-4 ">
                         <div className="flex flex-col gap-y-1 ">
                             <p className="text-dark-blue font-semibold text-lg">Contact us</p>
@@ -222,7 +222,7 @@ export default function ContactForm() {
                                    }
                                  />
                             </div>
-                            <div className="flex flex-col gap-y-2 mt-2">
+                            <div className="flex flex-col gap-y-2 mt-2 mb-5">
                                 <button type="submit" className="bg-dark-blue text-lg !font-medium  text-white p-2 rounded-md hover:bg-opacity-90 transition-transform duration-300 ease-in-out hover:translate-y-0 hover:scale-95 delay-100">
                                     {contactFormMutate.isPending ? (
                                         'Sending message...'
