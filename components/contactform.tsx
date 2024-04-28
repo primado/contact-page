@@ -10,17 +10,18 @@ export default function ContactForm() {
     
     return (
         <>
-            <div className="flex flex-row w-full justify-between">
-                <div className="flex flex-col w-[50%] gap-y-8 py-5 justify-center items-center ">
-                    <div className="border-2 border-red-800 flex flex-col gap-y-3 justify-start items-start">
-                    <div className=" ">
-                        <p className="text-dark-blue font-medium text-lg">Contact us</p>
-                        <h1 className="text-2xl font-bold text-dark">Get in touch</h1>
+            <div className="flex flex-row w-full justify-between items-center">
+                <div className="flex flex-col justify-center items-start px-[10%]">
+                    <div className="flex flex-col gap-y-4 ">
+                        <div className="flex flex-col gap-y-1 ">
+                            <p className="text-dark-blue font-medium text-lg">Contact us</p>
+                            <h1 className="text-2xl font-bold text-dark">Get in touch</h1>
+                           
+                        </div>
                         <p className="text-lg font-medium text-gray-500">We&apos;d love to hear from you. Please fill this form</p>
-                    </div>
                    </div>
-                    <form action="" className="flex flex-col gap-y-3">
-                        <div className="flex flex-row border  gap-y-3 gap-x-8 ">
+                    <form action="" className="flex flex-col gap-y-5 mt-5">
+                        <div className="flex flex-row gap-y-3 gap-x-8 ">
                             <div className="flex flex-col gap-y-2">
                                 <label htmlFor="fname">First Name</label>
                                 <input 
@@ -61,8 +62,8 @@ export default function ContactForm() {
                                     className="text-base font-medium focus:outline-none ring-2 ring-gray-400 p-2 rounded-md focus:ring-2 focus:ring-dark-blue"
                                 />
                             </div>
-                            <div className="flex flex-col gap-y-2">
-                                <button type="submit" className="">
+                            <div className="flex flex-col gap-y-2 mt-2">
+                                <button type="submit" className="bg-dark-blue text-lg !font-medium  text-white p-2 rounded-md hover:bg-opacity-90 transition-transform duration-300 ease-in-out hover:translate-y-0 hover:scale-95 delay-100">
                                     Send message
                                 </button>
                             </div>
@@ -74,7 +75,7 @@ export default function ContactForm() {
                        <Image 
                             src={img_one}
                             alt="coffee cup and jug"
-                            width={600}
+                            width={650}
                             height={100}
                             className="!p-0 !m-0 h-screen"
                             sizes="(max-with: 100%) 100vh"
