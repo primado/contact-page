@@ -3,6 +3,7 @@ import { Inter, Lugrasimo } from "next/font/google";
 import "./globals.css";
 import TanstackQueryProvider from "@/providers/tanstackQueryProvider";
 import Navbar from "@/components/navbar";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <TanstackQueryProvider>
        <body className={inter.className }>
         <Navbar />
+        <Toaster />
         {children}
         </body>
       </TanstackQueryProvider>

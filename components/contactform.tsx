@@ -5,8 +5,11 @@ import { useMutation } from "@tanstack/react-query"
 import Image from "next/image"
 import CarouselComponent from "./carousel"
 import { ErrorMessage } from "@hookform/error-message"
+import { toast } from "sonner"
+
 
 import img_one from "../public/nathan-dumlao-drov8-6RLUE-unsplash.jpg"
+
 
 type ContactType = {
     first_name: string,
@@ -15,6 +18,8 @@ type ContactType = {
     email_address: string,
     message: string
 }
+
+const api_url = process.env.NEXT_PUBLIC_API_BASE_URL
 
 export default function ContactForm() {
 
@@ -28,20 +33,51 @@ export default function ContactForm() {
             message: ""
         }
     })
+
+    // tanstack Query
+
+    const contactFormMutate = useMutation({
+        mutationKey: ['contact'],
+        mutationFn: async (formData: ContactType) => {
+            const response = await axios.post(`${api_url}`, formData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            console.log(response.data);
+            return response.data
+        },
+        onSuccess: () => {
+            toast.success('Submitted successfully', {
+                position: 'top-center',
+                duration: 4000,
+                closeButton: true
+            })
+        },
+        onError: (error) => {
+            toast.error('Oops, an error occured, please try again', {
+                position: 'top-center',
+                duration: 4000,
+                closeButton: true
+            })
+            console.log('Form error =>', error.cause, error.message)
+        }
+    })
         
     const onSubmit = async (data: ContactType) => {
         console.log("Contact form data => ", data)
+        contactFormMutate.mutateAsync(data)
     }
     
     
     return (
         <>
             <div className="flex flex-row w-full justify-between items-center">
-                <div className="flex flex-col justify-center items-start px-[10%]">
+                <div className="flex flex-col justify-center items-start px-[10%] py-16">
                     <div className="flex flex-col gap-y-4 ">
                         <div className="flex flex-col gap-y-1 ">
-                            <p className="text-dark-blue font-medium text-lg">Contact us</p>
-                            <h1 className="text-2xl font-bold text-dark">Get in touch</h1>
+                            <p className="text-dark-blue font-semibold text-lg">Contact us</p>
+                            <h1 className="text-3xl  font-bold text-dark">Get in touch</h1>
                            
                         </div>
                         <p className="text-lg font-medium text-gray-500">We&apos;d love to hear from you. Please fill this form</p>
@@ -188,7 +224,9 @@ export default function ContactForm() {
                             </div>
                             <div className="flex flex-col gap-y-2 mt-2">
                                 <button type="submit" className="bg-dark-blue text-lg !font-medium  text-white p-2 rounded-md hover:bg-opacity-90 transition-transform duration-300 ease-in-out hover:translate-y-0 hover:scale-95 delay-100">
-                                    Send message
+                                    {contactFormMutate.isPending ? (
+                                        'Sending message...'
+                                    ): 'Send message'}
                                 </button>
                             </div>
                         </div>
@@ -196,7 +234,7 @@ export default function ContactForm() {
                 </div>
                 <div className=" flex flex-row ">
                     <div className="">
-                       <Image 
+                       {/* <Image 
                             src={img_one}
                             alt="coffee cup and jug"
                             width={650}
@@ -204,8 +242,10 @@ export default function ContactForm() {
                             className="!p-0 !m-0 h-screen"
                             sizes="(max-with: 100%) 100vh"
                             // style={{objectPosition: 'right', objectFit: 'cover'}}
-                       />
-                       
+                       /> */}
+
+                       {/* You can  use either the carousel or the single image */}
+                       <CarouselComponent /> 
                     </div>
                 </div>
             </div>

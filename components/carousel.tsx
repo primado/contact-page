@@ -10,8 +10,8 @@ import {
   import Autoplay from "embla-carousel-autoplay"
 
   //Images
-  import img_one from "../public/nathan-dumlao-drov8-6RLUE-unsplash-min.jpg"
-  import img_2 from "../public/nathan-dumlao-2z3MOB3kfJU-unsplash-min.jpg"
+  import img_one from "../public/nathan-dumlao-2z3MOB3kfJU-unsplash-min.jpg"
+  import img_2 from "../public/nathan-dumlao-drov8-6RLUE-unsplash.jpg"
 
 
 export default function CarouselComponent() {
@@ -19,25 +19,27 @@ export default function CarouselComponent() {
     return (
         <div className="p-0">
             <Carousel 
-                className="w-full max-w-md"
+                className="w-full "
                 opts={{
                     align: "start",
                     loop: true,
                 }}
                 plugins={[
                     Autoplay({
-                      delay: 2000,
+                      delay: 3000,
                     }),
                   ]}
             >
                  <CarouselContent className="!m-0 !p-0" >
-                  <CarouselItem  >
+                  <CarouselItem className="min-h-screen " >
                     <div className="p-1">
                         <Image 
                             src={img_one}
                             alt="hero image"
-                            width={600}
-                            height={600}
+                            width={1000}
+                            className="!p-0 !m-0 h-screen"
+                          
+                            style={{objectPosition: 'right', objectFit: 'cover'}}
                         />
                     </div>
                   </CarouselItem>
@@ -46,8 +48,10 @@ export default function CarouselComponent() {
                         <Image 
                             src={img_2}
                             alt="hero image"
-                            width={600}
-                            height={600}
+                            width={1000}
+                            className="!p-0 !m-0 h-screen"
+                            
+                            style={{objectPosition: 'right', objectFit: 'cover', }}
                         />
                     </div>
                   </CarouselItem>
