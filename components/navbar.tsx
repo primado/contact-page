@@ -11,7 +11,7 @@ export default function Navbar() {
     const pathname = usePathname()
     return (
         <>
-            <nav className="bg-white shadow-md w-full flex flex-row justify-around items-center  gap-x-5 px-5 py-5">
+            <nav className="bg-white shadow-md w-full flex flex-row justify-between items-center  gap-x-5 px-[10%] py-5">
                 <div className="">
                     <p className="text-xl font-bold ">
                         <span className={pacifico.className}>
